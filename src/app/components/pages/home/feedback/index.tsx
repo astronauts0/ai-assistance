@@ -7,14 +7,14 @@ import { FaStar } from "react-icons/fa";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import useIsMobile from "@/app/hooks/useDeviceType";
+import useDeviceType from "@/app/hooks/useDeviceType";
 import AnimatedBlurText from "@/app/components/common/animate-blur-text";
 
 const Feedback = () => {
   const feedSectionRef = useRef<HTMLDivElement | null>(null);
   const feedContainerRef = useRef<HTMLDivElement | null>(null);
 
-  const isMobile = useIsMobile();
+  const device = useDeviceType();
 
   useGSAP(() => {
     const section = feedSectionRef.current;
@@ -101,14 +101,14 @@ const Feedback = () => {
 
       <div className="flex justify-center items-center gap-12 md:gap-28 w-full mt-20">
         <Image
-          width={isMobile ? 100 : 150}
-          height={isMobile ? 40 : 60}
+          width={device === "mobile" ? 100 : 150}
+          height={device === "mobile" ? 40 : 60}
           src="/images/home/google-review.svg"
           alt="google-review"
         />
         <Image
-          width={isMobile ? 100 : 150}
-          height={isMobile ? 40 : 69}
+          width={device === "mobile" ? 100 : 150}
+          height={device === "mobile" ? 40 : 69}
           src="/images/home/trust-pilo.svg"
           alt="trust-pilot"
         />

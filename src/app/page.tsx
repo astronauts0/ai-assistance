@@ -4,7 +4,6 @@ import CustomButton from "./components/common/button";
 import BannerSlider from "./components/common/banner-slider";
 import Image from "next/image";
 import { RxDoubleArrowDown } from "react-icons/rx";
-import ScrollingCircle from "./components/pages/home/scrolling-circle";
 import AnimatedText from "./components/pages/home/animated-text";
 import Feedback from "./components/pages/home/feedback";
 import { BANNER_SLIDES } from "./config/mock-data";
@@ -14,9 +13,7 @@ import toast from "react-hot-toast";
 import Footer from "./components/pages/home/footer";
 import Projects from "./components/pages/home/Projects";
 import ProjectsMob from "./components/pages/home/ProjectsMob";
-import useIsMobile from "./hooks/useDeviceType";
 import AnimatedBlurText from "./components/common/animate-blur-text";
-import useDeviceType from "./hooks/useDeviceType";
 
 export default function Home() {
   const isBrowser = typeof window !== "undefined";

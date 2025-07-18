@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  trailingSlash: false,
+  poweredByHeader: false,
+  productionBrowserSourceMaps: true,
 };
 
 export default nextConfig;
