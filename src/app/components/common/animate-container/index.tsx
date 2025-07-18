@@ -31,7 +31,7 @@ const AnimatedContainer = () => {
       viewBox="0 0 1440 1222"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-full object-cover"
+      className="w-full h-full"
       style={{ transform: "translateY(131px)" }}
     >
       <g filter="url(#filter0_f_1_9095)">

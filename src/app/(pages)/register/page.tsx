@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FiMail, FiLock, FiEye, FiEyeOff } from "react-icons/fi";
 
-const Login: React.FC = () => {
+const Register: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -21,9 +21,9 @@ const Login: React.FC = () => {
         <Logo />
       </nav>
 
-      <form className="max-w-[600px] mx-auto max-h-[546px] bg-white rounded-2xl shadow-md py-10 px-[100px]">
+      <form className="max-w-[600px] mx-auto max-h-[511px] bg-white rounded-2xl shadow-md py-10 px-[100px]">
         <h2 className="text-3xl font-semibold text-center mb-8">
-          Login to your account
+          Welcome to AI Assistant
         </h2>
 
         <div className="flex justify-between gap-4 mb-6">
@@ -75,20 +75,14 @@ const Login: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex justify-end mt-2 text-sm">
-          <Link href="/forgot-password" className="text-blue-500">
-            Forgot password?
-          </Link>
-        </div>
-
         <button className="w-full bg-black text-white py-3 mt-6 rounded-md font-semibold">
-          LOGIN
+          REGISTER
         </button>
 
         <div className="text-center text-sm mt-6">
-          Don’t have an account?{" "}
-          <Link href="/register" className="font-semibold text-purple-600">
-            Register now
+          Already a member? {""}
+          <Link href="/login" className="font-semibold text-purple-600">
+            Login now
           </Link>
         </div>
       </form>
@@ -96,4 +90,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default Register;

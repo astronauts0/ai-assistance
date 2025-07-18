@@ -6,8 +6,6 @@ import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(SplitText, ScrollTrigger);
-
 interface AnimatedTextProps {
   children: React.ReactNode;
   className?: string;
@@ -19,10 +17,10 @@ const AnimatedBlurText: React.FC<AnimatedTextProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(
-    () => {
-      if (!containerRef.current) return;
+  useGSAP(() => {
+    if (!containerRef.current) return;
 
+    const ctx = gsap.context(() => {
       const split = new SplitText(containerRef.current, { type: "chars" });
 
       gsap.set(containerRef.current, { perspective: 1000 });
@@ -37,24 +35,16 @@ const AnimatedBlurText: React.FC<AnimatedTextProps> = ({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top 80%",
-          toggleActions: "play none none reverse",
-        //   once: true,
-          markers: false,
+          once: true,
         },
       });
+    }, containerRef);
 
-      return () => {
-        split.revert(); // important for cleanup
-      };
-    },
-    { scope: containerRef } // ✅ important: unique scope per instance
-  );
+    return () => ctx.revert();
+  });
 
   return (
-    <h1
-      ref={containerRef}
-      className={`overflow-hidden ${className || ""}`}
-    >
+    <h1 ref={containerRef} className={`overflow-hidden ${className || ""}`}>
       {children}
     </h1>
   );

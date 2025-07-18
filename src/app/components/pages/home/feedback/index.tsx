@@ -53,18 +53,20 @@ const Feedback = () => {
       ref={feedSectionRef}
     >
       <div className="flex flex-col items-center gap-3 text-primary-black mb-10">
-        <div className="text-5xl text-center">
+        <div className="text-2xl md:text-5xl text-center">
           <AnimatedBlurText>Hear from our community</AnimatedBlurText>
         </div>
-        <p className="text-2xl text-center">
-          Scroll and hover to read the reviews
-        </p>
+        <div className="text-sm md:text-2xl text-center">
+          <AnimatedBlurText>
+            Scroll and hover to read the reviews
+          </AnimatedBlurText>
+        </div>
       </div>
 
       <div className="relative overflow-hidden">
         <div
           ref={feedContainerRef}
-          className="flex items-center -space-x-16 py-10 testimonial-container translate-x-1/2 sm:translate-x-1/4"
+          className="flex items-center -space-x-16 py-10 testimonial-container translate-x-1/4"
         >
           {FEEDBACK.map((item, index) => (
             <div

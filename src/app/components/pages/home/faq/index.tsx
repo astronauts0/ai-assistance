@@ -8,34 +8,39 @@ import { FAQ_DATA } from "@/app/config/mock-data";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const FAQ = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
-      const titles = gsap.utils.toArray<HTMLElement>(".faq-title");
+      const ctx = gsap.context(() => {
+        const titles = gsap.utils.toArray<HTMLElement>(".faq-title");
 
-      titles.forEach((el) => {
-        const split = new SplitText(el, { type: "chars" });
+        titles.forEach((el) => {
+          const split = new SplitText(el, { type: "chars" });
 
-        gsap.set(el, { perspective: 1000 });
+          gsap.set(el, { perspective: 1000 });
 
-        gsap.from(split.chars, {
-          y: "100%",
-          opacity: 0,
-          filter: "blur(20px)",
-          ease: "power4.out",
-          duration: 1,
-          stagger: 0.05,
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-            // once: true,
-          },
+          gsap.from(split.chars, {
+            y: "100%",
+            opacity: 0,
+            filter: "blur(20px)",
+            ease: "power4.out",
+            duration: 1,
+            stagger: 0.05,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              toggleActions: "play none none none",
+              once: true, // sirf aik baar chale
+            },
+          });
         });
-      });
+      }, containerRef);
+
+      return () => ctx.revert();
     },
     { scope: containerRef }
   );

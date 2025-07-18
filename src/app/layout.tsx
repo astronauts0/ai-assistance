@@ -27,7 +27,7 @@ export default function RootLayout({
       >
         <Lenis>
           <Providers>
-            <Header />
+            {/* <Header /> */}
             {children}
           </Providers>
         </Lenis>

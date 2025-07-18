@@ -126,7 +126,7 @@ const Projects = () => {
               className="stripe h-[60px] w-full absolute top-1/2 left-1/2 origin-left items-center flex"
               style={{ transform: `translateY(-50%) rotate(${33 * i}deg)` }}
             >
-              <div className="str_first opacity-50 text-2xl translate-x-6 w-1/2 h-full text-white flex items-center justify-center">
+              <div className="str_first opacity-10 text-2xl translate-x-6 w-1/2 h-full text-white flex items-center justify-center">
                 {item.text}
               </div>
               <div className="str_second w-1/2 h-full flex items-center justify-center">
