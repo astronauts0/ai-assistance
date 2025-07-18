@@ -1,0 +1,120 @@
+"use client";
+
+import { FEEDBACK } from "@/app/config/mock-data";
+import Image from "next/image";
+import React, { useRef } from "react";
+import { FaStar } from "react-icons/fa";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { FaArrowLeftLong } from "react-icons/fa6";
+import useIsMobile from "@/app/hooks/useDeviceType";
+import AnimatedBlurText from "@/app/components/common/animate-blur-text";
+
+const Feedback = () => {
+  const feedSectionRef = useRef<HTMLDivElement | null>(null);
+  const feedContainerRef = useRef<HTMLDivElement | null>(null);
+
+  const isMobile = useIsMobile();
+
+  useGSAP(() => {
+    const section = feedSectionRef.current;
+    const container = feedContainerRef.current;
+
+    if (!section || !container) return;
+
+    const totalWidth = container.scrollWidth;
+
+    const ctx = gsap.context(() => {
+      gsap.to(container, {
+        x: () => -(totalWidth - window.innerWidth + 100),
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start:
+            window.innerWidth < 1000 && window.innerWidth > 600
+              ? "top 10%"
+              : window.innerWidth <= 600
+              ? "top -5%"
+              : "top -25%",
+          end: () => `+=${totalWidth}`,
+          markers: true,
+          pin: true,
+          scrub: true,
+        },
+      });
+    }, feedSectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section
+      className="bg-white py-14 sm:py-24 lg:py-52 overflow-hidden"
+      ref={feedSectionRef}
+    >
+      <div className="flex flex-col items-center gap-3 text-primary-black mb-10">
+        <div className="text-5xl text-center">
+          <AnimatedBlurText>Hear from our community</AnimatedBlurText>
+        </div>
+        <p className="text-2xl text-center">
+          Scroll and hover to read the reviews
+        </p>
+      </div>
+
+      <div className="relative overflow-hidden">
+        <div
+          ref={feedContainerRef}
+          className="flex items-center -space-x-16 py-10 testimonial-container translate-x-1/2 sm:translate-x-1/4"
+        >
+          {FEEDBACK.map((item, index) => (
+            <div
+              key={index}
+              style={{ zIndex: FEEDBACK.length - index }}
+              className="testimonial_card min-w-[210px] h-[210px] sm:min-w-[302px] sm:h-[262px] p-8 sm:p-[47px] bg-white rounded-2xl flex flex-col justify-between border border-gray-200"
+            >
+              <div className="flex flex-col gap-1.5">
+                <h1 className="md:text-sm text-[10px] text-primary-black">
+                  "{item.quote}"
+                </h1>
+                <div className="flex gap-1.5 mt-1">
+                  {[...Array(5)].map((_, i) => (
+                    <FaStar
+                      key={i}
+                      className="text-yellow-400 sm:size-4 size-3"
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-col text-primary-black mt-auto">
+                <h1 className="font-medium sm:text-lg text-xs">{item.name}</h1>
+                <p className="text-[10px] sm:text-sm text-gray-600">
+                  {item.role}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="size-14 rounded-full bg-primary-gray flex justify-center items-center absolute top-1/2 left-4 cursor-pointer">
+          <FaArrowLeftLong className="text-3xl" />
+        </div>
+      </div>
+
+      <div className="flex justify-center items-center gap-12 md:gap-28 w-full mt-20">
+        <Image
+          width={isMobile ? 100 : 150}
+          height={isMobile ? 40 : 60}
+          src="/images/home/google-review.svg"
+          alt="google-review"
+        />
+        <Image
+          width={isMobile ? 100 : 150}
+          height={isMobile ? 40 : 69}
+          src="/images/home/trust-pilo.svg"
+          alt="trust-pilot"
+        />
+      </div>
+    </section>
+  );
+};
+
+export default Feedback;

@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #850cff;
+  --secondary: #ff00cc;
+  --primary-black: #0e0e0e;
+  --primary-gray: #e4e4e4;
+  --primary-yellow: #ffdb49;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-primary-black: var(--primary-black);
+  --color-primary-gray: var(--primary-gray);
+  --color-primary-yellow: var(--primary-yellow);
+  --radius-primary: 5px;
+}
+
+body {
+  background: var(--primary-black);
+}
+
+.btn-gradient-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+/* * animations */
+
+@keyframes gradient-swap {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.btn-gradient-hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 50%,
+    var(--color-primary) 100%
+  );
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+}
+
+.btn-gradient-hover:hover::before {
+  opacity: 1;
+  animation: gradient-swap 5s ease-in-out infinite;
+}
+
+@keyframes swap-to-left {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-150px, 0);
+  }
+}
+
+@keyframes swap-to-right {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(150px, 0);
+  }
+}
+
+.animate-swap-left {
+  animation: swap-to-left 4s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.animate-swap-right {
+  animation: swap-to-right 4s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.slider-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.slider-track {
+  display: flex;
+  animation: scroll-left 10s linear infinite;
+  width: max-content;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.slider-item {
+  flex: 0 0 auto;
+  margin-right: 4rem;
+  display: flex;
+  align-items: center;
+  min-width: max-content;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
+.slider-track,
+.slider-item {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.slider-item * {
+  white-space: nowrap;
+}
+
+.text-shadow-primary {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* * end */
+
+/* * ::shadow */
+
+.review_card {
+  /* transform: rotateY(45deg); */
+  box-shadow: 0px 10px 10px 0px var(--primary-gray);
+}
+
+.testimonial_card {
+  transform: perspective(700px) rotateY(-20deg);
+  box-shadow: 10px -4px 1px 0px var(--primary-gray);
+}
+
+.testimonial_card:hover {
+  transform: rotateY(0deg) scale(1.2);
+  z-index: 100 !important;
+  border: 1px solid var(--primary-black);
+  box-shadow: 0px 0px 10px 1px var(--primary-gray);
+  transition: all 1s ease;
+}
+
+.top-fade-shadow {
+  position: relative;
+}
+
+.top-fade-shadow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  z-index: 20;
+  pointer-events: none;
+}
+
+
+
+/* * end */
+
+
+/* * projects */
+
+.dots-container {
+  transform-origin: center center;
+}
+
+.dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 5px;
+  width: 5px;
+  background-color: white;
+  transform: translate(-50%, -50%);
+}
+
+
+/* * end */
+
+/* * utils */
