@@ -19,7 +19,7 @@ const Header = () => {
   };
 
   return (
-    <div className="py-3 md:py-3.5 px-6 lg:py-7 lg:px-12 sticky top-0 w-full flex items-center justify-between z-30">
+    <div className="py-3 md:py-3.5 px-6 lg:py-7 lg:px-12 fixed top-0 left-0 w-full flex items-center justify-between z-50">
       <Logo />
 
       <CustomButton

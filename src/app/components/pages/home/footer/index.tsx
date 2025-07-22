@@ -9,10 +9,10 @@ import { RiTwitterXFill } from "react-icons/ri";
 const Footer = () => {
   return (
     <div className="flex flex-col gap-14 w-full mx-auto relative overflow-hidden">
-      <div className="absolute -top-32 lg:-top-60 left-0 w-full">
+      <div className="absolute -top-32 lg:-top-60 left-0 w-full -z-10">
         <AnimatedContainer />
       </div>
-      <div className="bg-white/5 p-1.5 pt-3.5 lg:p-6 lg:pt-12 flex flex-col lg:gap-14 gap-[18px] lg:rounded-[30px] rounded-[9px] overflow-hidden z-10 mx-5 sm:mx-28 lg:px-auto lg:w-9/12 lg:mx-auto">
+      <div className="relative bg-white/5 p-1.5 pt-3.5 lg:p-6 lg:pt-12 flex flex-col lg:gap-14 gap-[18px] lg:rounded-[30px] rounded-[9px] overflow-hidden z-10 mx-5 sm:mx-28 lg:px-auto lg:w-9/12 lg:mx-auto">
         <h1 className="lg:text-[44px] sm:text-2xl text-sm font-extrabold text-white lg:w-10/12">
           Lorem Ipsum is simply dummy text of the printing and typesetting
         </h1>
@@ -30,7 +30,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between z-10 mx-5 sm:mx-28 lg:px-auto lg:w-9/12 lg:mx-auto lg:mb-28 mb-6">
+      <div className="relative z-10 flex items-center justify-between mx-5 sm:mx-28 lg:px-auto lg:w-9/12 lg:mx-auto lg:mb-28 mb-6">
         <div className="flex flex-col lg:gap-12 sm:gap-2.5 gap-1.5">
           <Logo />
           <p className="text-white lg:text-base sm:text-[9px] text-[6px]">

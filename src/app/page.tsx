@@ -14,13 +14,15 @@ import Footer from "./components/pages/home/footer";
 import Projects from "./components/pages/home/Projects";
 import ProjectsMob from "./components/pages/home/ProjectsMob";
 import AnimatedBlurText from "./components/common/animate-blur-text";
+import Header from "./components/layout/header";
 
 export default function Home() {
   const isBrowser = typeof window !== "undefined";
-  const isMobile = isBrowser ? window.innerWidth < 768 : false;
+  const isTab = isBrowser ? window.innerWidth < 1024 : false;
 
   return (
-    <section>
+    <main>
+      <Header />
       <div className="h-[450px] md:h-[600px] lg:h-[1103px] w-full flex flex-col items-center relative z-10">
         <div className="absolute -top-12 lg:top-0 left-0 w-full h-full">
           <AnimatedContainer />
@@ -45,36 +47,38 @@ export default function Home() {
         <BannerSlider slides={BANNER_SLIDES} />
       </div>
 
-      <div className="w-full lg:min-h-screen h-full flex md:items-center relative py-28 sm:py-48 lg:py-0 bg-primary-gray top-fade-shadow">
+      <div className="how_works lg:-top-60 -top-28 relative w-full h-[500px] sm:h-[748px] lg:h-[1070px] flex md:items-center overflow-hidden">
         <div className="flex justify-center items-center w-full mx-auto h-full relative px-10 md:px-0">
           <div className="space-y-3 sm:space-y-7 lg:space-y-3">
             <div className="text-2xl md:text-[40px] lg:text-6xl font-bold text-center md:text-start">
               <AnimatedBlurText>How it works?</AnimatedBlurText>
             </div>
-            <p className="text-sm md:text-base lg:text-2xl text-center md:text-start">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. <br className="md:block hidden" /> Lorem Ipsum has been
-              the industry's standard dummy text ever since the 1500s,{" "}
-              <br className="md:block hidden" /> when an unknown printer took a
-              galley of type and scrambled it to make a type{" "}
-              <br className="md:block hidden" /> specimen book.
-            </p>
+            <div className="text-sm md:text-base lg:text-2xl text-center md:text-start">
+              <AnimatedBlurText>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. <br className="md:block hidden" /> Lorem Ipsum has
+                been the industry's standard dummy text ever since the 1500s,{" "}
+                <br className="md:block hidden" /> when an unknown printer took
+                a galley of type and scrambled it to make a type{" "}
+                <br className="md:block hidden" /> specimen book.
+              </AnimatedBlurText>
+            </div>
           </div>
         </div>
         <RxDoubleArrowDown className="text-2xl md:text-4xl absolute top-10/12 left-1/2 -translate-x-1/2" />
       </div>
 
-      {isMobile ? (
+      {isTab ? (
         <ProjectsMob />
       ) : (
         <div>
-          <div className="h-[60vh]"></div>
+          <div className="h-[40vh]"></div>
           <Projects />
           <div className="h-[80vh]"></div>
         </div>
       )}
 
-      <div className="flex flex-col gap-16 items-center w-full lg:min-h-screen h-full relative">
+      <div className="flex flex-col gap-16 items-center w-full lg:min-h-screen 2xl:min-h-auto h-full relative">
         <div className="flex flex-col items-center gap-8 lg:gap-14">
           <div className="md:text-5xl text-3xl sm:text-4xl text-white md:text-left text-center">
             <AnimatedBlurText>Lorem Ipsum is simply dummy</AnimatedBlurText>
@@ -124,6 +128,6 @@ export default function Home() {
         </div>
       </div>
       <Footer />
-    </section>
+    </main>
   );
 }

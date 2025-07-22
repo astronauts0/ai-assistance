@@ -21,17 +21,17 @@ const AnimatedBlurText: React.FC<AnimatedTextProps> = ({
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      const split = new SplitText(containerRef.current, { type: "chars" });
+      const split = new SplitText(containerRef.current, { type: "words" });
 
       gsap.set(containerRef.current, { perspective: 1000 });
 
-      gsap.from(split.chars, {
+      gsap.from(split.words, {
         y: "100%",
         opacity: 0,
         filter: "blur(20px)",
         ease: "power4.out",
-        duration: 1,
-        stagger: 0.07,
+        duration: 2,
+        stagger: 0.15,
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top 80%",

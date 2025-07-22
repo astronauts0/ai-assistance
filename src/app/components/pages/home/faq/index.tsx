@@ -19,11 +19,11 @@ const FAQ = () => {
         const titles = gsap.utils.toArray<HTMLElement>(".faq-title");
 
         titles.forEach((el) => {
-          const split = new SplitText(el, { type: "chars" });
+          const split = new SplitText(el, { type: "words" });
 
           gsap.set(el, { perspective: 1000 });
 
-          gsap.from(split.chars, {
+          gsap.from(split.words, {
             y: "100%",
             opacity: 0,
             filter: "blur(20px)",
@@ -33,8 +33,7 @@ const FAQ = () => {
             scrollTrigger: {
               trigger: el,
               start: "top 85%",
-              toggleActions: "play none none none",
-              once: true, // sirf aik baar chale
+              once: true,
             },
           });
         });
@@ -70,9 +69,9 @@ const FAQ = () => {
             className="text-white/75"
             indicator={({ isOpen }) =>
               isOpen ? (
-                <IoIosArrowDown className="text-3xl border border-white rounded-lg p-1 rotate-180" />
+                <IoIosArrowDown className="text-2xl sm:text-3xl border border-white rounded-lg p-1 rotate-180" />
               ) : (
-                <IoIosArrowDown className="text-3xl border border-white/25 rounded-lg p-1" />
+                <IoIosArrowDown className="text-2xl sm:text-3xl border border-white/25 rounded-lg p-1" />
               )
             }
           >

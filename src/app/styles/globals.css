@@ -187,44 +187,31 @@ body {
   transition: all 1s ease;
 }
 
-.top-fade-shadow {
-  position: relative;
-}
-
-.top-fade-shadow::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-  z-index: 20;
-  pointer-events: none;
-}
-
-
-
 /* * end */
 
-
-/* * projects */
-
-.dots-container {
-  transform-origin: center center;
+/* * works */
+.how_works {
+  background: linear-gradient(
+    180deg,
+    #0e0e0e 0%,
+    rgba(255, 255, 255, 0.68) 26.44%,
+    #ffffff 100%
+  );
 }
-
-.dot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 5px;
-  width: 5px;
-  background-color: white;
-  transform: translate(-50%, -50%);
-}
-
-
 /* * end */
+
+/* @media quires */
+
+@media screen and (max-width: 768px) {
+  .slider-track {
+    animation: scroll-left 20s linear infinite !important;
+  }
+}
 
 /* * utils */
+
+.blur_bg {
+  background: #ffffff1a;
+  backdrop-filter: blur(100px);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}

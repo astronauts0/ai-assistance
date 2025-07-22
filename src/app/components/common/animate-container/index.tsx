@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-const AnimatedContainer = () => {
+const AnimatedContainer = ({ height = 1222 }) => {
   const leftCircleRef = useRef(null);
   const rightCircleRef = useRef(null);
 
@@ -27,7 +27,7 @@ const AnimatedContainer = () => {
   return (
     <svg
       width="1440"
-      height="1222"
+      height={height}
       viewBox="0 0 1440 1222"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

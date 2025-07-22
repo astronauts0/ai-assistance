@@ -22,14 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.className} antialiased max-w-[1440px] mx-auto`}
+        className={`${geistSans.className} antialiased`}
         cz-shortcut-listen="true"
       >
         <Lenis>
-          <Providers>
-            {/* <Header /> */}
-            {children}
-          </Providers>
+          <Providers>{children}</Providers>
         </Lenis>
       </body>
     </html>

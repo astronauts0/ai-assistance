@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 type DeviceType = "mobile" | "tablet" | "desktop";
 
 const getDeviceType = (width: number): DeviceType => {
-  if (width <= 767) return "mobile";
-  if (width <= 1024) return "tablet";
+  if (width < 767) return "mobile";
+  if (width < 1024) return "tablet";
   return "desktop";
 };
 
